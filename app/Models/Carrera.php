@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Horario extends Model
+class Carrera extends Model
 {
-    protected $table = 'horarios';
+    protected $table = 'carreras';
 
     protected $primaryKey = 'id';
     public $timestamps = true;
     
-    protected $fillable = ['horainicio', 'horafin', 'turno', 'estado'];
+    protected $fillable = ['iduser', 'idhorario', 'nombre', 'sigla','estado'];
 }

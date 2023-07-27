@@ -4,11 +4,11 @@
 <div class="card-header">
                 <h1 class="card-title">
                 <i class="fas fa-file mr-1"></i>
-                <b>GESTIONAR DOCENTE</b> 
+                <b>GESTIONAR CARRERA   </b> 
                 </h1>
                 <div class="float-right d-sm-block"> 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="#" data-toggle="modal" data-target="#addUserModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
+                        <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
                     </div> 
                 </div>
 </div>
@@ -35,36 +35,32 @@
 
 <div class="card table-responsive">
     <div class="card-body">
-        <table class="table table-hover" id="docentes">
+        <table class="table table-hover" id="carreras">
             <thead class="table-light">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Telefono</th>
-                    <th>Fecha_nac.</th>
+                    <th>Sigla</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @foreach($docentes as $docente)
+                @foreach($carreras as $carrera)
                 <tr>
-                    <td>{{ $docente->id }}</td>
-                    <td>{{ $docente->name }}</td>
-                    <td>{{ $docente->email }}</td>
-                    <td>{{ $docente->telefono }}</td>
-                    <td>{{ $docente->fecha_nac }}</td>
-                    <td>{{ $docente->estado }}</td>
+                    <td>{{ $carrera->id }}</td>
+                    <td>{{ $carrera->nombre }}</td>
+                    <td>{{ $carrera->sigla }}</td>
+                    <td>{{ $carrera->estado }}</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#editModal{{ $docente->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#editModal{{ $carrera->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                         &nbsp;
-                        <a href="#" data-toggle="modal" data-target="#deleteModal{{ $docente->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#deleteModal{{ $carrera->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
 
-                @include('Docentes.modificar', ['docente' => $docente])
-                @include('Docentes.eliminar', ['docente' => $docente])
+                @include('Carreras.modificar', ['carrera' => $carrera])
+                @include('Carreras.eliminar', ['carrera' => $carrera])
 
                 @endforeach
             </tbody>
@@ -72,6 +68,6 @@
     </div>
 </div>
 
-@include('Docentes.agregar', ['docente' => $docente])
+@include('Carreras.agregar', ['carrera' => $carrera])
 
 @endsection
