@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('carreras', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->unsignedBigInteger('iduser'); // Llave foránea para el usuario relacionado
             $table->unsignedBigInteger('idhorario'); // Llave foránea para el horario relacionado
             $table->string('nombre');

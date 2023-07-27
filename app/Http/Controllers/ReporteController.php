@@ -95,4 +95,9 @@ class ReporteController extends Controller
 
         return view('estadisticas.index',compact('datos'));
     }
+
+    public function intruso()
+    {
+        return view('intruso');
+    }
 }

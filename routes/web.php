@@ -12,6 +12,7 @@ use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Middleware\DirectorMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,8 @@ Route::get('/dashboard', function () {
     return view('layouts.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+
+Route::middleware([DirectorMiddleware::class])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -99,7 +101,9 @@ Route::middleware('auth')->group(function () {
     ]);
 
     Route::get('/estadisticas', [ReporteController::class, 'estadisticas'])->name('estadisticas.index');
-
 });
+
+//vista para intrusos
+Route::get('/unauthorized', [ReporteController::class, 'intruso'])->name('intruso');
 
 require __DIR__.'/auth.php';
